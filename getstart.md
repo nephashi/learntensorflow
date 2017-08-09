@@ -1,6 +1,6 @@
-#Getting Start with Tensorflow
+# Getting Start with Tensorflow
 tf提供多层的API，低层API Core提供更完全的系统控制，但是高层的API允许你更容易的构建模型，例如tf.contrib.learn。
-##Tensor（张量）
+## Tensor（张量）
 张量是tf中核心的数据单元，简单来说就是多位数组，张量的阶就是数组的维度。例如：
 ```
 3	#零阶张量,也就是一个标量.shape[]
@@ -9,13 +9,13 @@ tf提供多层的API，低层API Core提供更完全的系统控制，但是高�
 [[[1., 2., 3.]], [[7., 8., 9.]]]	#一个3阶张量.shape[2, 1, 3]
 ```
 
-##构建简单的线性回归模型
-###使用TensorFlow-Core建模
+## 构建简单的线性回归模型
+### 使用TensorFlow-Core建模
 TF-Core是低层API，允许我们更完整的控制程序功能。可以认为这种程序包括两部分
 1. 构建一个计算图
 2. 执行一个计算图
 一个计算图（computational graph）是被封装到一个图中的一系列TensorFlow操作的集合。图中的顶点（node）将0个或更多张量作为输入，并输出一个张量。
-####常量
+#### 常量
 我们可以定义一些常量顶点：输入0个张量，输出一个值。
 ```
 node1 = tf.constant(3.0, dtype=tf.float32)
@@ -48,7 +48,7 @@ sess.run(node3):  7.0
 ```
 TensorFlow还提供了一种有效的可视化工具：TensorBoard，它可以得到下面的结果。
 ![tensorboard-add](images/tensorboard_add.png)
-####占位符（placeholder）
+#### 占位符（placeholder）
 上面的常量不太有用，我们还需要一些东西来接受可变的输入：placeholder就是这样的东西。正如其名，placeholder可以占领一个位置，等待之后的输入。可以在placeholder上定义操作，之后使用session的run方法的feed_dict参数将数据喂给占位符。
 ```
 a = tf.placeholder(tf.float32)
@@ -66,7 +66,7 @@ print(sess.run(add_and_triple, {a: 3, b:4.5}))
 [ 3.  7.]
 22.5
 ```
-####变量
+#### 变量
 机器学习任务中，我们需要改变参数达到训练目的。这时需要引入变量，声明变量时需要声明类型和一个初始值。
 ```
 W = tf.Variable([.3], dtype=tf.float32)
@@ -84,7 +84,7 @@ print(sess.run(linear_model, {x:[1,2,3,4]}))
 ```
 [ 0.          0.30000001  0.60000002  0.90000004]
 ```
-####优化模型
+#### 优化模型
 接下来我们会使用损失函数优化模型。给定一组x和y，我们采用均方误差度量模型。
 ```
 y = tf.placeholder(tf.float32)
