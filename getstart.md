@@ -142,7 +142,7 @@ print("W: %s b: %s loss: %s"%(curr_W, curr_b, curr_loss))
 ```
 这张图也可以被tensorBoard可视化
 ![](images/tensorboard_final.png)
-###使用tf.contrib.learn构造模型
+### 使用tf.contrib.learn构造模型
 这是一种高级API，省去了很多细节
 ```
 import tensorflow as tf
